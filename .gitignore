@@ -1,0 +1,96 @@
+# ===========================
+# WordPress
+# ===========================
+
+# Core de WordPress (si se instala con Composer, descomenta estas líneas)
+# /wp-admin/
+# /wp-includes/
+
+# Archivos de configuración
+wp-config.php
+wp-config-local.php
+wp-config-dev.php
+
+# Logs
+*.log
+debug.log
+error_log
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Composer
+/vendor/
+composer.lock
+
+# Caché
+.cache/
+tmp/
+temp/
+cache/
+
+# PHPUnit
+phpunit.xml
+.phpunit.result.cache
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Variables de entorno
+.env
+.env.local
+.env.development
+.env.production
+
+# Archivos comprimidos
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Uploads (opcional)
+# Descomenta si NO deseas subir archivos multimedia
+# wp-content/uploads/
+
+# Caché de plugins
+wp-content/cache/
+wp-content/upgrade/
+wp-content/advanced-cache.php
+
+# Backups
+wp-content/backup*
+wp-content/backups/
+updraft/
+ai1wm-backups/
+*.wpress
+
+# Plugins temporales
+wp-content/plugins/hello.php
+
+# Archivos generados
+*.sql
+*.sqlite
+*.db
+
+# Certificados
+*.pem
+*.key
