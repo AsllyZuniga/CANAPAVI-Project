@@ -1,43 +1,83 @@
 import { useState, useEffect } from "react";
+import type { LucideIcon } from "lucide-react";
 import {
   Menu, X, Heart, Users, MapPin, Phone, Mail, Calendar,
   BookOpen, Camera, Download, ArrowRight, Star, Check,
   Facebook, Instagram, Twitter, Youtube, ChevronDown,
-  Globe, Shield, Music, Leaf, Lightbulb, HandHeart,
-  FileText, Video, Search, Filter, Send, ExternalLink,
+  Globe, Shield, Music, Lightbulb, FileText, Search,
+  Filter, Send, ExternalLink,   Home, ClipboardList, Music2,
+  Palette, Sprout, Waves, Globe2, Building2, Network, Landmark,
+  Mountain, Building, GraduationCap, PawPrint, Flag, Briefcase,
+  Microscope, UserCog, Megaphone, Scale, Handshake, HeartHandshake,
+  Target, Sparkles, Award, Lock, ShieldCheck, UserCircle, Leaf,
+  HandHeart, HandMetal, TreePine, FolderKanban, Newspaper,
+  CalendarDays, Images,
 } from "lucide-react";
 import logoImg from "@/imports/image.png";
+import heroPhoto from "@/assets/img2.jpg";
+import donationImg from "@/assets/img1.jpg";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
-const navLinks = [
+type NavSubItem = { id: string; label: string; desc: string; icon: LucideIcon };
+type NavLink = { id: string; label: string; submenu?: NavSubItem[] };
+
+const navLinks: NavLink[] = [
   { id: "inicio", label: "Inicio" },
   { id: "nosotros", label: "Nosotros" },
-  { id: "programas", label: "Programas" },
-  { id: "proyectos", label: "Proyectos" },
-  { id: "noticias", label: "Noticias" },
-  { id: "galeria", label: "Galería" },
-  { id: "biblioteca", label: "Biblioteca" },
-  { id: "eventos", label: "Eventos" },
+  {
+    id: "programas",
+    label: "Programas",
+    submenu: [
+      { id: "programas", label: "Programas", desc: "Líneas de acción estratégica", icon: Briefcase },
+      { id: "proyectos", label: "Proyectos", desc: "Trabajo en territorio", icon: FolderKanban },
+    ],
+  },
+  {
+    id: "contenido",
+    label: "Contenido",
+    submenu: [
+      { id: "noticias", label: "Noticias", desc: "Actualidad institucional", icon: Newspaper },
+      { id: "eventos", label: "Eventos", desc: "Agenda cultural 2025", icon: CalendarDays },
+      { id: "galeria", label: "Galería", desc: "Memorias visuales", icon: Images },
+      { id: "biblioteca", label: "Biblioteca", desc: "Recursos digitales", icon: BookOpen },
+    ],
+  },
   { id: "aliados", label: "Aliados" },
-  { id: "voluntariado", label: "Voluntariado" },
-  { id: "donaciones", label: "Donaciones" },
+  {
+    id: "unete",
+    label: "Únete",
+    submenu: [
+      { id: "voluntariado", label: "Voluntariado", desc: "Aporta tus talentos", icon: HandHeart },
+      { id: "donaciones", label: "Donaciones", desc: "Apoya nuestra causa", icon: Heart },
+    ],
+  },
   { id: "contacto", label: "Contacto" },
 ];
 
-const stats = [
-  { value: "+20", label: "Años de trabajo", icon: "📅" },
-  { value: "+15", label: "Comunidades beneficiadas", icon: "🏘️" },
-  { value: "+45", label: "Proyectos ejecutados", icon: "📋" },
-  { value: "+800", label: "Mujeres participantes", icon: "👩🏾" },
-  { value: "+12", label: "Municipios impactados", icon: "📍" },
+const stats: { value: string; label: string; icon: LucideIcon }[] = [
+  { value: "+20", label: "Años de trabajo", icon: Calendar },
+  { value: "+15", label: "Comunidades beneficiadas", icon: Home },
+  { value: "+45", label: "Proyectos ejecutados", icon: ClipboardList },
+  { value: "+800", label: "Mujeres participantes", icon: Users },
+  { value: "+12", label: "Municipios impactados", icon: MapPin },
 ];
 
-const programs = [
+const programs: {
+  id: number;
+  title: string;
+  icon: LucideIcon;
+  gradient: string;
+  bg: string;
+  description: string;
+  objectives: string[];
+  results: string;
+  category: string;
+}[] = [
   {
     id: 1,
     title: "Patrimonio Cultural",
-    icon: "🥁",
+    icon: Music2,
     gradient: "from-green-700 to-emerald-500",
     bg: "bg-green-50",
     description:
@@ -49,7 +89,7 @@ const programs = [
   {
     id: 2,
     title: "Derechos Humanos",
-    icon: "✊",
+    icon: HandMetal,
     gradient: "from-blue-800 to-blue-500",
     bg: "bg-blue-50",
     description:
@@ -61,7 +101,7 @@ const programs = [
   {
     id: 3,
     title: "Empoderamiento de Mujeres",
-    icon: "👩🏾",
+    icon: HeartHandshake,
     gradient: "from-orange-600 to-amber-400",
     bg: "bg-orange-50",
     description:
@@ -73,7 +113,7 @@ const programs = [
   {
     id: 4,
     title: "Etnoeducación",
-    icon: "📚",
+    icon: BookOpen,
     gradient: "from-teal-700 to-cyan-500",
     bg: "bg-teal-50",
     description:
@@ -85,7 +125,7 @@ const programs = [
   {
     id: 5,
     title: "Arte y Artivismo",
-    icon: "🎨",
+    icon: Palette,
     gradient: "from-red-600 to-orange-400",
     bg: "bg-red-50",
     description:
@@ -97,7 +137,7 @@ const programs = [
   {
     id: 6,
     title: "Tejidos Sonoros",
-    icon: "🎵",
+    icon: Music,
     gradient: "from-purple-700 to-violet-500",
     bg: "bg-purple-50",
     description:
@@ -109,7 +149,7 @@ const programs = [
   {
     id: 7,
     title: "Liderazgo Comunitario",
-    icon: "🏘️",
+    icon: Users,
     gradient: "from-green-800 to-lime-600",
     bg: "bg-lime-50",
     description:
@@ -121,7 +161,7 @@ const programs = [
   {
     id: 8,
     title: "Juventud y Territorio",
-    icon: "🌱",
+    icon: Sprout,
     gradient: "from-lime-700 to-green-400",
     bg: "bg-green-50",
     description:
@@ -133,7 +173,7 @@ const programs = [
   {
     id: 9,
     title: "Medio Ambiente",
-    icon: "🌊",
+    icon: Waves,
     gradient: "from-cyan-800 to-teal-400",
     bg: "bg-cyan-50",
     description:
@@ -349,28 +389,28 @@ const testimonials = [
   },
 ];
 
-const allies = [
-  { name: "ONU Mujeres", emoji: "🇺🇳", type: "Internacional" },
-  { name: "ACNUR", emoji: "🏢", type: "Internacional" },
-  { name: "PNUD Colombia", emoji: "🌐", type: "Internacional" },
-  { name: "MinCultura", emoji: "🏛️", type: "Nacional" },
-  { name: "Gobernación de Nariño", emoji: "🏔️", type: "Territorial" },
-  { name: "Alcaldía de Tumaco", emoji: "🏙️", type: "Municipal" },
-  { name: "Universidad de Nariño", emoji: "🎓", type: "Académico" },
-  { name: "WWF Colombia", emoji: "🐾", type: "Ambiental" },
-  { name: "Embajada de Alemania", emoji: "🇩🇪", type: "Internacional" },
-  { name: "Secretaría de Educación", emoji: "📐", type: "Educativo" },
-  { name: "Banco Interamericano", emoji: "💼", type: "Financiero" },
-  { name: "IIAP", emoji: "🔬", type: "Investigación" },
+const allies: { name: string; icon: LucideIcon; type: string }[] = [
+  { name: "ONU Mujeres", icon: Globe2, type: "Internacional" },
+  { name: "ACNUR", icon: Building2, type: "Internacional" },
+  { name: "PNUD Colombia", icon: Network, type: "Internacional" },
+  { name: "MinCultura", icon: Landmark, type: "Nacional" },
+  { name: "Gobernación de Nariño", icon: Mountain, type: "Territorial" },
+  { name: "Alcaldía de Tumaco", icon: Building, type: "Municipal" },
+  { name: "Universidad de Nariño", icon: GraduationCap, type: "Académico" },
+  { name: "WWF Colombia", icon: PawPrint, type: "Ambiental" },
+  { name: "Embajada de Alemania", icon: Flag, type: "Internacional" },
+  { name: "Secretaría de Educación", icon: BookOpen, type: "Educativo" },
+  { name: "Banco Interamericano", icon: Briefcase, type: "Financiero" },
+  { name: "IIAP", icon: Microscope, type: "Investigación" },
 ];
 
-const teamMembers = [
-  { name: "Rosa Elvira Grueso", role: "Directora Ejecutiva", emoji: "👩🏾‍💼" },
-  { name: "Jorge Luis Montaño", role: "Coordinador de Programas", emoji: "👨🏾‍💼" },
-  { name: "Amalia Torres", role: "Directora de Proyectos", emoji: "👩🏽‍💼" },
-  { name: "Ernesto Valencia", role: "Coordinador de Comunicaciones", emoji: "👨🏾‍💻" },
-  { name: "Milagros Caicedo", role: "Lideresa de Mujeres", emoji: "👩🏾‍🎤" },
-  { name: "Héctor Perlaza", role: "Asesor Jurídico", emoji: "👨🏾‍⚖️" },
+const teamMembers: { name: string; role: string; icon: LucideIcon; gradient: string }[] = [
+  { name: "Rosa Elvira Grueso", role: "Directora Ejecutiva", icon: UserCog, gradient: "from-green-700 to-emerald-500" },
+  { name: "Jorge Luis Montaño", role: "Coordinador de Programas", icon: ClipboardList, gradient: "from-blue-800 to-blue-500" },
+  { name: "Amalia Torres", role: "Directora de Proyectos", icon: Briefcase, gradient: "from-orange-600 to-amber-400" },
+  { name: "Ernesto Valencia", role: "Coordinador de Comunicaciones", icon: Megaphone, gradient: "from-purple-700 to-violet-500" },
+  { name: "Milagros Caicedo", role: "Lideresa de Mujeres", icon: HeartHandshake, gradient: "from-red-600 to-orange-400" },
+  { name: "Héctor Perlaza", role: "Asesor Jurídico", icon: Scale, gradient: "from-teal-700 to-cyan-500" },
 ];
 
 const library = [
@@ -442,12 +482,21 @@ const galleryItems = [
   { id: 9, img: "photo-1531746020798-e6953c6e8e04", cat: "Mujeres", title: "Foro de mujeres" },
 ];
 
-const donationLevels = [
+const donationLevels: {
+  label: string;
+  amount: string;
+  period: string;
+  icon: LucideIcon;
+  color: string;
+  btnColor: string;
+  perks: string[];
+  featured: boolean;
+}[] = [
   {
     label: "Semilla",
     amount: "$20.000 COP",
     period: "/ mes",
-    emoji: "🌱",
+    icon: Sprout,
     color: "border-green-200 bg-green-50",
     btnColor: "bg-green-700 hover:bg-green-600",
     perks: ["Boletín mensual", "Certificado de donante", "Acceso a biblioteca digital"],
@@ -457,7 +506,7 @@ const donationLevels = [
     label: "Raíz",
     amount: "$50.000 COP",
     period: "/ mes",
-    emoji: "🌿",
+    icon: Leaf,
     color: "border-orange-400 bg-orange-50",
     btnColor: "bg-orange-500 hover:bg-orange-400",
     perks: ["Todo lo de Semilla", "Invitación a eventos", "Mención en informes", "Placa de reconocimiento"],
@@ -467,7 +516,7 @@ const donationLevels = [
     label: "Manglar",
     amount: "$150.000 COP",
     period: "/ mes",
-    emoji: "🌳",
+    icon: TreePine,
     color: "border-blue-200 bg-blue-50",
     btnColor: "bg-blue-800 hover:bg-blue-700",
     perks: ["Todo lo de Raíz", "Visita a proyectos", "Reunión con el equipo", "Logo en materiales"],
@@ -506,6 +555,7 @@ function SectionHeading({ children, light = false }: { children: React.ReactNode
 function Navbar({ page, setPage }: { page: string; setPage: (p: string) => void }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);
@@ -513,10 +563,28 @@ function Navbar({ page, setPage }: { page: string; setPage: (p: string) => void 
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
+  useEffect(() => {
+    if (!openDropdown) return;
+    const handler = (e: MouseEvent) => {
+      if (!(e.target as Element).closest("[data-nav-dropdown]")) {
+        setOpenDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [openDropdown]);
+
   const go = (id: string) => {
     setPage(id);
     setOpen(false);
+    setOpenDropdown(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const isActive = (link: NavLink) => {
+    if (page === link.id) return true;
+    if (link.submenu) return link.submenu.some((s) => s.id === page);
+    return false;
   };
 
   return (
@@ -528,31 +596,99 @@ function Navbar({ page, setPage }: { page: string; setPage: (p: string) => void 
         }`}
       >
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
-            <button onClick={() => go("inicio")} className="flex items-center gap-2.5 shrink-0">
-              <img src={logoImg} alt="Logo CANAPAVI" className="h-10 w-auto" />
+          <div className="flex items-center justify-between h-20">
+            <button onClick={() => go("inicio")} className="flex items-center gap-3 shrink-0">
+              <img src={logoImg} alt="Logo CANAPAVI" className="h-14 w-auto" />
               <div className="hidden sm:block leading-tight">
-                <div className="text-xs font-black text-green-900 tracking-wide">CANAPAVI</div>
-                <div className="text-[9px] text-gray-400 font-medium tracking-wide uppercase">
+                <div className="text-sm font-black text-green-900 tracking-wide">CANAPAVI</div>
+                <div className="text-[11px] text-gray-400 font-medium tracking-wide uppercase">
                   Cultura · Identidad · Territorio
                 </div>
               </div>
             </button>
 
-            <div className="hidden 2xl:flex items-center gap-0.5">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => go(link.id)}
-                  className={`px-2.5 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
-                    page === link.id
-                      ? "bg-green-800 text-white"
-                      : "text-gray-600 hover:bg-green-50 hover:text-green-900"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+            <div className="hidden xl:flex items-center gap-1">
+              {navLinks.map((link) =>
+                link.submenu ? (
+                  <div
+                    key={link.id}
+                    className="relative"
+                    data-nav-dropdown
+                    onMouseEnter={() => setOpenDropdown(link.id)}
+                    onMouseLeave={() => setOpenDropdown((cur) => (cur === link.id ? null : cur))}
+                  >
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(openDropdown === link.id ? null : link.id)
+                      }
+                      className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 flex items-center gap-1 ${
+                        isActive(link)
+                          ? "bg-green-800 text-white"
+                          : "text-gray-600 hover:bg-green-50 hover:text-green-900"
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronDown
+                        className={`w-3 h-3 transition-transform duration-200 ${
+                          openDropdown === link.id ? "rotate-180" : ""
+                        }`}
+                      />
+                    </button>
+                    {openDropdown === link.id && (
+                      <div className="absolute top-full left-0 pt-2 z-50">
+                        <div className="relative bg-white rounded-2xl shadow-xl border border-gray-100 p-2 min-w-[280px]">
+                          <div className="absolute -top-1.5 left-5 w-3 h-3 bg-white border-l border-t border-gray-100 rotate-45" />
+                          {link.submenu.map((item) => (
+                            <button
+                              key={item.id}
+                              onClick={() => go(item.id)}
+                              className={`w-full flex items-start gap-3 px-3 py-2.5 rounded-xl transition-colors text-left ${
+                                page === item.id
+                                  ? "bg-green-50"
+                                  : "hover:bg-green-50"
+                              }`}
+                            >
+                              <div
+                                className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
+                                  page === item.id
+                                    ? "bg-green-700 text-white"
+                                    : "bg-green-50 text-green-700"
+                                }`}
+                              >
+                                <item.icon className="w-4 h-4" strokeWidth={1.8} />
+                              </div>
+                              <div>
+                                <div
+                                  className={`text-sm font-semibold ${
+                                    page === item.id ? "text-green-900" : "text-gray-800"
+                                  }`}
+                                >
+                                  {item.label}
+                                </div>
+                                <div className="text-xs text-gray-400 mt-0.5 leading-snug">
+                                  {item.desc}
+                                </div>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    key={link.id}
+                    onClick={() => go(link.id)}
+                    className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+                      page === link.id
+                        ? "bg-green-800 text-white"
+                        : "text-gray-600 hover:bg-green-50 hover:text-green-900"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                )
+              )}
             </div>
 
             <div className="flex items-center gap-2">
@@ -563,7 +699,7 @@ function Navbar({ page, setPage }: { page: string; setPage: (p: string) => void 
                 <Heart className="w-3.5 h-3.5" /> Donar
               </button>
               <button
-                className="2xl:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
+                className="xl:hidden p-2 rounded-xl hover:bg-gray-100 transition-colors"
                 onClick={() => setOpen(!open)}
                 aria-label="Menú"
               >
@@ -574,22 +710,64 @@ function Navbar({ page, setPage }: { page: string; setPage: (p: string) => void 
         </div>
 
         {open && (
-          <div className="2xl:hidden border-t border-gray-100 bg-white pb-4">
-            <div className="max-w-[1400px] mx-auto px-4 pt-3 grid grid-cols-2 sm:grid-cols-3 gap-1">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => go(link.id)}
-                  className={`px-3 py-2.5 rounded-xl text-sm font-semibold text-left transition-all ${
-                    page === link.id ? "bg-green-800 text-white" : "text-gray-700 hover:bg-green-50"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
+          <div className="xl:hidden border-t border-gray-100 bg-white pb-4">
+            <div className="max-w-[1400px] mx-auto px-4 pt-3 space-y-1">
+              {navLinks.map((link) =>
+                link.submenu ? (
+                  <details
+                    key={link.id}
+                    className="group rounded-xl overflow-hidden"
+                    open={isActive(link)}
+                  >
+                    <summary
+                      className={`px-3 py-2.5 rounded-xl text-sm font-semibold cursor-pointer flex items-center justify-between transition-colors ${
+                        isActive(link)
+                          ? "bg-green-50 text-green-900"
+                          : "text-gray-700 hover:bg-green-50"
+                      }`}
+                    >
+                      {link.label}
+                      <ChevronDown className="w-4 h-4 group-open:rotate-180 transition-transform" />
+                    </summary>
+                    <div className="mt-1 ml-3 pl-3 space-y-1 border-l-2 border-green-100">
+                      {link.submenu.map((item) => (
+                        <button
+                          key={item.id}
+                          onClick={() => go(item.id)}
+                          className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-left transition-colors ${
+                            page === item.id
+                              ? "bg-green-100 text-green-900 font-semibold"
+                              : "text-gray-600 hover:bg-green-50"
+                          }`}
+                        >
+                          <item.icon
+                            className={`w-4 h-4 shrink-0 ${
+                              page === item.id ? "text-green-700" : "text-gray-400"
+                            }`}
+                            strokeWidth={1.8}
+                          />
+                          {item.label}
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                ) : (
+                  <button
+                    key={link.id}
+                    onClick={() => go(link.id)}
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                      page === link.id
+                        ? "bg-green-800 text-white"
+                        : "text-gray-700 hover:bg-green-50"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                )
+              )}
               <button
                 onClick={() => go("donaciones")}
-                className="col-span-2 sm:col-span-1 mt-2 flex items-center justify-center gap-2 bg-[#E64A19] text-white px-4 py-2.5 rounded-xl font-bold text-sm"
+                className="w-full mt-3 flex items-center justify-center gap-2 bg-[#E64A19] hover:bg-orange-600 text-white px-4 py-2.5 rounded-xl font-bold text-sm transition-colors"
               >
                 <Heart className="w-4 h-4" /> Donar ahora
               </button>
@@ -704,9 +882,11 @@ function Footer({ setPage }: { setPage: (p: string) => void }) {
 
         <div className="border-t border-green-800 mt-14 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-green-500 text-xs">
-            © 2025 CANAPAVI – Fundación Cultura Nariñense. Todos los derechos reservados.
+            © 2026 CANAPAVI – Fundación Cultura Nariñense. Todos los derechos reservados.
           </p>
-          <p className="text-green-600 text-xs">Hecho con amor en Tumaco, Nariño, Colombia 🇨🇴</p>
+          <p className="text-green-600 text-xs flex items-center justify-center sm:justify-end gap-1.5">
+            <MapPin className="w-3.5 h-3.5" /> Hecho con amor en Tumaco, Nariño, Colombia
+          </p>
         </div>
       </div>
     </footer>
@@ -773,13 +953,13 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
 
           <div className="hidden lg:block">
             <div className="relative">
-              <div className="rounded-3xl overflow-hidden h-[420px] bg-green-800 shadow-2xl">
+              <div className="rounded-3xl overflow-hidden h-[460px] bg-green-800 shadow-2xl">
                 <img
-                  src={unsplash("photo-1529156069898-49953e39b3ac", 700, 500)}
-                  alt="Comunidad CANAPAVI"
-                  className="w-full h-full object-cover"
+                  src={heroPhoto}
+                  alt="Cantadoras del Pacífico sur — Comunidad CANAPAVI"
+                  className="w-full h-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-green-950/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-green-950/60 via-green-950/10 to-transparent" />
               </div>
               <div className="absolute -bottom-6 -left-6 bg-amber-500 rounded-2xl p-5 shadow-xl">
                 <div className="text-white font-display font-bold text-3xl">+20</div>
@@ -807,7 +987,9 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
                 key={i}
                 className="text-center py-8 px-4 rounded-2xl bg-gradient-to-b from-green-50 to-white border border-green-100 hover:border-green-200 hover:shadow-sm transition-all duration-200"
               >
-                <div className="text-3xl mb-2">{s.icon}</div>
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white border border-green-100 text-green-700 mb-3 shadow-sm">
+                  <s.icon className="w-6 h-6" strokeWidth={1.8} />
+                </div>
                 <div className="font-display text-4xl font-bold text-green-800 leading-none mb-1">
                   {s.value}
                 </div>
@@ -836,9 +1018,9 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
                 className="bg-white rounded-2xl p-7 shadow-sm hover:shadow-lg border border-gray-100 transition-all duration-300 hover:-translate-y-1.5 group"
               >
                 <div
-                  className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${prog.gradient} text-2xl mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}
+                  className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${prog.gradient} text-white mb-5 shadow-md group-hover:scale-110 transition-transform duration-300`}
                 >
-                  {prog.icon}
+                  <prog.icon className="w-7 h-7" strokeWidth={1.8} />
                 </div>
                 <h3 className="font-display font-bold text-green-950 text-xl mb-2">{prog.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed mb-5">{prog.description}</p>
@@ -1056,7 +1238,9 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
                 key={i}
                 className="bg-white rounded-2xl p-4 flex flex-col items-center gap-2 shadow-sm border border-gray-100 hover:border-green-200 hover:shadow-md transition-all duration-200"
               >
-                <div className="text-3xl">{a.emoji}</div>
+                <div className="w-10 h-10 rounded-xl bg-green-50 text-green-700 flex items-center justify-center">
+                  <a.icon className="w-5 h-5" strokeWidth={1.8} />
+                </div>
                 <div className="text-xs font-bold text-gray-700 text-center leading-tight">{a.name}</div>
                 <div className="text-[10px] text-gray-400">{a.type}</div>
               </div>
@@ -1066,33 +1250,64 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
       </section>
 
       {/* Donation CTA */}
-      <section className="py-24 bg-gradient-to-br from-[#E64A19] via-orange-500 to-amber-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-white blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-white blur-3xl" />
-        </div>
-        <div className="relative max-w-3xl mx-auto px-6 text-center">
-          <div className="text-6xl mb-5">❤️</div>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold mb-5 leading-tight">
-            Tu apoyo transforma vidas en el Pacífico
-          </h2>
-          <p className="text-orange-100 text-lg leading-relaxed mb-10">
-            Con tu donación ayudas a preservar el patrimonio cultural, defender los derechos de las
-            comunidades negras y empoderar a las mujeres del Pacífico colombiano.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <button
-              onClick={() => go("donaciones")}
-              className="bg-white text-orange-600 hover:bg-orange-50 px-9 py-4 rounded-full font-bold text-lg transition-all shadow-xl hover:shadow-2xl hover:-translate-y-0.5"
-            >
-              Donar ahora
-            </button>
-            <button
-              onClick={() => go("voluntariado")}
-              className="border-2 border-white text-white hover:bg-white/15 px-9 py-4 rounded-full font-bold text-lg transition-all"
-            >
-              Ser voluntario
-            </button>
+      <section className="relative bg-green-950 text-white overflow-hidden">
+        <div className="grid lg:grid-cols-2">
+          {/* Content - first on mobile, right on desktop */}
+          <div className="order-1 lg:order-2 px-6 sm:px-12 lg:pl-16 lg:pr-20 py-16 lg:py-24 flex flex-col justify-center">
+            <div className="inline-flex items-center gap-2 self-start border border-amber-400/30 rounded-full px-4 py-1.5 mb-7">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span className="text-amber-300 text-xs font-bold tracking-widest uppercase">
+                Sé parte del cambio
+              </span>
+            </div>
+            <h2 className="font-display text-4xl sm:text-5xl font-bold mb-5 leading-[1.1]">
+              Tu apoyo <span className="italic text-amber-300 font-normal">transforma vidas</span>{" "}
+              en el Pacífico
+            </h2>
+            <p className="text-green-200 text-lg leading-relaxed mb-9 max-w-xl">
+              Con tu donación ayudas a preservar el patrimonio cultural, defender los derechos de las
+              comunidades negras y empoderar a las mujeres del Pacífico colombiano.
+            </p>
+            <div className="flex flex-wrap gap-4 mb-10">
+              <button
+                onClick={() => go("donaciones")}
+                className="bg-amber-500 hover:bg-amber-400 text-green-950 px-8 py-4 rounded-full font-bold text-lg transition-all shadow-xl shadow-amber-500/20 hover:shadow-2xl hover:shadow-amber-500/30 hover:-translate-y-0.5 flex items-center gap-2"
+              >
+                <Heart className="w-5 h-5 fill-green-950" />
+                Donar ahora
+              </button>
+              <button
+                onClick={() => go("voluntariado")}
+                className="border-2 border-white/25 text-white hover:bg-white/10 hover:border-white/40 px-8 py-4 rounded-full font-bold text-lg transition-all"
+              >
+                Ser voluntario
+              </button>
+            </div>
+            <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-green-300 border-t border-white/10 pt-6">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-amber-400" strokeWidth={2} />
+                <span>Donación segura</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FileText className="w-4 h-4 text-amber-400" strokeWidth={2} />
+                <span>Deducible de impuestos</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="w-4 h-4 text-amber-400" strokeWidth={2} />
+                <span>Informes auditados</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Image - second on mobile, left on desktop */}
+          <div className="order-2 lg:order-1 relative h-80 sm:h-[420px] lg:h-auto lg:min-h-[640px] bg-green-800">
+            <img
+              src={donationImg}
+              alt="Comunidad CANAPAVI — Diversidad, liderazgo y resistencias"
+              className="absolute inset-0 w-full h-full object-cover object-top"
+            />
+            <div className="absolute inset-0 lg:bg-gradient-to-r lg:from-transparent lg:via-green-950/30 lg:to-green-950/90" />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-950/70 via-green-950/10 to-transparent lg:hidden" />
           </div>
         </div>
       </section>
@@ -1113,13 +1328,13 @@ function NosotrosPage() {
     { year: "2024", text: "Lanzamiento de la Biblioteca Digital Cultural del Pacífico Sur." },
   ];
 
-  const values = [
-    { title: "Identidad", emoji: "🌊", desc: "Reafirmamos con orgullo la herencia y cultura afrocolombiana." },
-    { title: "Comunidad", emoji: "🤝", desc: "Actuamos desde y para las comunidades del Pacífico." },
-    { title: "Equidad", emoji: "⚖️", desc: "Defendemos los derechos de todas las personas sin distinción." },
-    { title: "Territorio", emoji: "🌿", desc: "El territorio es vida, historia y futuro de nuestros pueblos." },
-    { title: "Solidaridad", emoji: "💚", desc: "Construimos juntos tejidos de apoyo y resistencia." },
-    { title: "Innovación", emoji: "💡", desc: "Combinamos lo ancestral con lo contemporáneo para generar cambio." },
+  const values: { title: string; icon: LucideIcon; desc: string; color: string }[] = [
+    { title: "Identidad", icon: Waves, desc: "Reafirmamos con orgullo la herencia y cultura afrocolombiana.", color: "text-cyan-700" },
+    { title: "Comunidad", icon: Handshake, desc: "Actuamos desde y para las comunidades del Pacífico.", color: "text-green-700" },
+    { title: "Equidad", icon: Scale, desc: "Defendemos los derechos de todas las personas sin distinción.", color: "text-blue-700" },
+    { title: "Territorio", icon: Leaf, desc: "El territorio es vida, historia y futuro de nuestros pueblos.", color: "text-emerald-700" },
+    { title: "Solidaridad", icon: HeartHandshake, desc: "Construimos juntos tejidos de apoyo y resistencia.", color: "text-red-700" },
+    { title: "Innovación", icon: Lightbulb, desc: "Combinamos lo ancestral con lo contemporáneo para generar cambio.", color: "text-amber-600" },
   ];
 
   return (
@@ -1144,9 +1359,11 @@ function NosotrosPage() {
 
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+          <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10">
           <div className="bg-green-50 border border-green-100 rounded-3xl p-10">
-            <div className="text-4xl mb-4">🎯</div>
+            <div className="w-14 h-14 rounded-2xl bg-white border border-green-100 text-green-700 flex items-center justify-center mb-4 shadow-sm">
+              <Target className="w-7 h-7" strokeWidth={1.8} />
+            </div>
             <h2 className="font-display text-2xl font-bold text-green-950 mb-4">Misión</h2>
             <p className="text-gray-600 leading-relaxed">
               Proteger, preservar, fortalecer y promover la identidad cultural, los conocimientos
@@ -1157,7 +1374,9 @@ function NosotrosPage() {
             </p>
           </div>
           <div className="bg-blue-50 border border-blue-100 rounded-3xl p-10">
-            <div className="text-4xl mb-4">🌟</div>
+            <div className="w-14 h-14 rounded-2xl bg-white border border-blue-100 text-blue-700 flex items-center justify-center mb-4 shadow-sm">
+              <Sparkles className="w-7 h-7" strokeWidth={1.8} />
+            </div>
             <h2 className="font-display text-2xl font-bold text-green-950 mb-4">Visión</h2>
             <p className="text-gray-600 leading-relaxed">
               Ser un referente nacional e internacional en la preservación del patrimonio cultural
@@ -1181,7 +1400,9 @@ function NosotrosPage() {
                 key={i}
                 className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-md transition-all duration-200"
               >
-                <div className="text-4xl mb-3">{v.emoji}</div>
+                <div className={`w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center mb-4 ${v.color}`}>
+                  <v.icon className="w-6 h-6" strokeWidth={1.8} />
+                </div>
                 <h3 className="font-display font-bold text-green-950 text-xl mb-2">{v.title}</h3>
                 <p className="text-gray-500 text-sm leading-relaxed">{v.desc}</p>
               </div>
@@ -1231,7 +1452,11 @@ function NosotrosPage() {
                 key={i}
                 className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm text-center hover:shadow-md transition-all duration-200"
               >
-                <div className="text-6xl mb-3">{m.emoji}</div>
+                <div
+                  className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${m.gradient} text-white mx-auto mb-4 flex items-center justify-center shadow-md`}
+                >
+                  <m.icon className="w-10 h-10" strokeWidth={1.8} />
+                </div>
                 <h3 className="font-display font-bold text-green-950 text-lg mb-1">{m.name}</h3>
                 <div className="text-sm text-[#E64A19] font-semibold">{m.role}</div>
               </div>
@@ -1275,9 +1500,9 @@ function ProgramasPage() {
                 <div className="p-7">
                   <div className="flex items-center justify-between mb-4">
                     <div
-                      className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${prog.gradient} text-2xl shadow-md`}
+                      className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${prog.gradient} text-white shadow-md`}
                     >
-                      {prog.icon}
+                      <prog.icon className="w-7 h-7" strokeWidth={1.8} />
                     </div>
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-wide">
                       {prog.category}
@@ -1826,7 +2051,9 @@ function AliadosPage() {
                 key={i}
                 className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-md flex items-center gap-5 transition-all duration-200 hover:border-green-200"
               >
-                <div className="text-5xl">{a.emoji}</div>
+                <div className="w-14 h-14 rounded-2xl bg-green-50 text-green-700 flex items-center justify-center shrink-0">
+                  <a.icon className="w-7 h-7" strokeWidth={1.8} />
+                </div>
                 <div>
                   <h3 className="font-bold text-green-950 text-base">{a.name}</h3>
                   <span className="text-xs font-semibold text-[#E64A19] bg-orange-50 rounded-full px-2.5 py-0.5 mt-1 inline-block">
@@ -1856,38 +2083,50 @@ function AliadosPage() {
 // ─── VOLUNTARIADO ─────────────────────────────────────────────────────────────
 
 function VoluntariadoPage() {
-  const opportunities = [
+  const opportunities: {
+    title: string;
+    icon: LucideIcon;
+    area: string;
+    commitment: string;
+    modality: string;
+    desc: string;
+    color: string;
+  }[] = [
     {
       title: "Voluntariado en comunicaciones",
-      emoji: "📱",
+      icon: Megaphone,
       area: "Comunicaciones",
       commitment: "10 h/semana",
       modality: "Remoto",
       desc: "Apoya la gestión de redes sociales, redacción de contenidos y diseño de materiales de comunicación.",
+      color: "text-purple-700 bg-purple-50 border-purple-100",
     },
     {
       title: "Apoyo jurídico y DDHH",
-      emoji: "⚖️",
+      icon: Scale,
       area: "Derechos Humanos",
       commitment: "8 h/semana",
       modality: "Híbrido",
       desc: "Acompaña procesos de documentación de violaciones, talleres jurídicos y asesoría comunitaria.",
+      color: "text-blue-700 bg-blue-50 border-blue-100",
     },
     {
       title: "Docencia en etnoeducación",
-      emoji: "📚",
+      icon: GraduationCap,
       area: "Educación",
       commitment: "12 h/semana",
       modality: "Presencial Tumaco",
       desc: "Apoya el desarrollo de materiales educativos con enfoque afrocolombiano en escuelas comunitarias.",
+      color: "text-teal-700 bg-teal-50 border-teal-100",
     },
     {
       title: "Arte y cultura comunitaria",
-      emoji: "🎨",
+      icon: Palette,
       area: "Arte",
       commitment: "6 h/semana",
       modality: "Presencial",
       desc: "Facilita talleres de arte, fotografía, música y expresión cultural en comunidades del Pacífico.",
+      color: "text-rose-700 bg-rose-50 border-rose-100",
     },
   ];
 
@@ -1917,13 +2156,15 @@ function VoluntariadoPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
             {[
-              { emoji: "🌿", title: "Impacto real", desc: "Tu trabajo transforma comunidades reales." },
-              { emoji: "📜", title: "Certificado", desc: "Constancia de voluntariado con descripción de funciones." },
-              { emoji: "🎓", title: "Aprendizaje", desc: "Formación en cultura afrocolombiana y DDHH." },
-              { emoji: "🤝", title: "Red", desc: "Conéctate con activistas, artistas y líderes del Pacífico." },
+              { icon: Sparkles, title: "Impacto real", desc: "Tu trabajo transforma comunidades reales.", color: "text-amber-600 bg-amber-50 border-amber-100" },
+              { icon: Award, title: "Certificado", desc: "Constancia de voluntariado con descripción de funciones.", color: "text-emerald-700 bg-emerald-50 border-emerald-100" },
+              { icon: GraduationCap, title: "Aprendizaje", desc: "Formación en cultura afrocolombiana y DDHH.", color: "text-blue-700 bg-blue-50 border-blue-100" },
+              { icon: Handshake, title: "Red", desc: "Conéctate con activistas, artistas y líderes del Pacífico.", color: "text-rose-700 bg-rose-50 border-rose-100" },
             ].map((b, i) => (
-              <div key={i} className="text-center p-7 bg-green-50 border border-green-100 rounded-2xl">
-                <div className="text-4xl mb-3">{b.emoji}</div>
+              <div key={i} className="text-center p-7 bg-white border border-gray-100 shadow-sm rounded-2xl hover:shadow-md transition-all duration-200">
+                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mx-auto mb-4 ${b.color}`}>
+                  <b.icon className="w-7 h-7" strokeWidth={1.8} />
+                </div>
                 <h3 className="font-bold text-green-950 mb-2">{b.title}</h3>
                 <p className="text-gray-500 text-sm">{b.desc}</p>
               </div>
@@ -1941,7 +2182,9 @@ function VoluntariadoPage() {
                 className="bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md p-7 transition-all duration-200"
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-4xl">{opp.emoji}</div>
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 border ${opp.color}`}>
+                    <opp.icon className="w-7 h-7" strokeWidth={1.8} />
+                  </div>
                   <div className="flex-1">
                     <div className="flex flex-wrap gap-2 mb-2">
                       <span className="text-xs font-bold text-[#E64A19] bg-orange-50 rounded-full px-2.5 py-0.5">
@@ -2014,7 +2257,9 @@ function DonacionesPage() {
           <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-white blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <div className="text-5xl mb-4">❤️</div>
+          <div className="w-16 h-16 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center mx-auto mb-4">
+            <Heart className="w-8 h-8 text-white fill-white" strokeWidth={1.8} />
+          </div>
           <h1 className="font-display text-5xl font-bold mb-5">Apoya a CANAPAVI</h1>
           <p className="text-orange-100 text-lg max-w-2xl mx-auto">
             Tu donación preserva culturas, defiende derechos y empodera a las mujeres y comunidades
@@ -2032,16 +2277,18 @@ function DonacionesPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
             {[
-              { emoji: "🥁", amount: "$20.000", impact: "Materiales para un taller de marimba" },
-              { emoji: "📚", amount: "$50.000", impact: "Cartillas de etnoeducación para 10 niños" },
-              { emoji: "🌊", amount: "$100.000", impact: "Siembra de manglar en 100 m² de costa" },
-              { emoji: "🎵", amount: "$200.000", impact: "Grabación de un canto tradicional ancestral" },
+              { icon: Music2, amount: "$20.000", impact: "Materiales para un taller de marimba", color: "text-green-700 bg-green-50 border-green-100" },
+              { icon: BookOpen, amount: "$50.000", impact: "Cartillas de etnoeducación para 10 niños", color: "text-teal-700 bg-teal-50 border-teal-100" },
+              { icon: Waves, amount: "$100.000", impact: "Siembra de manglar en 100 m² de costa", color: "text-cyan-700 bg-cyan-50 border-cyan-100" },
+              { icon: Music, amount: "$200.000", impact: "Grabación de un canto tradicional ancestral", color: "text-purple-700 bg-purple-50 border-purple-100" },
             ].map((item, i) => (
               <div
                 key={i}
                 className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm text-center hover:shadow-md transition-all duration-200"
               >
-                <div className="text-4xl mb-3">{item.emoji}</div>
+                <div className={`w-14 h-14 rounded-2xl border flex items-center justify-center mx-auto mb-4 ${item.color}`}>
+                  <item.icon className="w-7 h-7" strokeWidth={1.8} />
+                </div>
                 <div className="font-display font-bold text-2xl text-green-800 mb-2">{item.amount}</div>
                 <p className="text-gray-500 text-sm leading-snug">{item.impact}</p>
               </div>
@@ -2108,8 +2355,9 @@ function DonacionesPage() {
                   <Heart className="w-5 h-5" />
                   {donationType === "mensual" ? "Donar mensualmente" : "Donar ahora"}
                 </button>
-                <p className="text-center text-xs text-gray-400 mt-4">
-                  🔒 Pago seguro · Tu donación es deducible de impuestos · CANAPAVI NIT: 900.xxx.xxx-x
+                <p className="text-center text-xs text-gray-400 mt-4 flex items-center justify-center gap-1.5">
+                  <ShieldCheck className="w-3.5 h-3.5 text-green-600" />
+                  Pago seguro · Tu donación es deducible de impuestos · CANAPAVI NIT: 900.xxx.xxx-x
                 </p>
               </div>
             </div>
@@ -2134,7 +2382,9 @@ function DonacionesPage() {
                       Más popular
                     </div>
                   )}
-                  <div className="text-4xl mb-4">{level.emoji}</div>
+                  <div className="w-14 h-14 rounded-2xl bg-white border border-gray-100 text-green-800 flex items-center justify-center mb-4 shadow-sm">
+                    <level.icon className="w-7 h-7" strokeWidth={1.8} />
+                  </div>
                   <div className="font-display font-bold text-2xl text-green-950 mb-1">{level.label}</div>
                   <div className="font-bold text-3xl text-green-800 mb-1">{level.amount}</div>
                   <div className="text-gray-500 text-sm mb-6">{level.period}</div>
