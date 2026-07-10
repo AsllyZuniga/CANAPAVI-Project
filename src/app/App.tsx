@@ -16,6 +16,16 @@ import {
 import logoImg from "@/imports/image.png";
 import heroPhoto from "@/assets/img2.jpg";
 import donationImg from "@/assets/img1.jpg";
+import progImg3 from "@/assets/img3.jpg";
+import progImg4 from "@/assets/img4.jpg";
+import progImg5 from "@/assets/img5.jpg";
+import progImg6 from "@/assets/img6.jpg";
+import progImg7 from "@/assets/img7.jpg";
+import progImg8 from "@/assets/img8.jpg";
+import progImg9 from "@/assets/img9.jpg";
+import progImg10 from "@/assets/img10.jpg";
+import progImg11 from "@/assets/img11.jpg";
+import progImg12 from "@/assets/img12.jpg";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -73,6 +83,7 @@ const programs: {
   objectives: string[];
   results: string;
   category: string;
+  image: string;
 }[] = [
   {
     id: 1,
@@ -85,6 +96,7 @@ const programs: {
     objectives: ["Documentar tradiciones orales", "Formar guardianes culturales", "Crear archivos digitales comunitarios"],
     results: "+120 tradiciones documentadas",
     category: "Cultura",
+    image: progImg3,
   },
   {
     id: 2,
@@ -97,6 +109,7 @@ const programs: {
     objectives: ["Capacitación en DDHH", "Acompañamiento jurídico", "Documentación de violaciones"],
     results: "+300 personas capacitadas",
     category: "Derechos",
+    image: progImg4,
   },
   {
     id: 3,
@@ -109,6 +122,7 @@ const programs: {
     objectives: ["Escuelas de liderazgo femenino", "Apoyo a emprendimientos", "Redes de protección"],
     results: "+800 mujeres participantes",
     category: "Género",
+    image: progImg5,
   },
   {
     id: 4,
@@ -121,6 +135,7 @@ const programs: {
     objectives: ["Currículos con enfoque propio", "Formación de docentes", "Material educativo afrocolombiano"],
     results: "+25 escuelas vinculadas",
     category: "Educación",
+    image: progImg6,
   },
   {
     id: 5,
@@ -133,6 +148,7 @@ const programs: {
     objectives: ["Talleres de arte comunitario", "Festivales culturales", "Murales y arte público"],
     results: "+50 festivales organizados",
     category: "Arte",
+    image: progImg7,
   },
   {
     id: 6,
@@ -145,6 +161,7 @@ const programs: {
     objectives: ["Grabaciones etnomusicales", "Talleres de marimba y percusión", "Conciertos itinerantes"],
     results: "+200 canciones rescatadas",
     category: "Música",
+    image: progImg8,
   },
   {
     id: 7,
@@ -157,6 +174,7 @@ const programs: {
     objectives: ["Escuelas de formación de líderes", "Fortalecimiento de consejos comunitarios", "Incidencia política"],
     results: "+40 líderes certificados",
     category: "Comunidad",
+    image: progImg9,
   },
   {
     id: 8,
@@ -169,6 +187,7 @@ const programs: {
     objectives: ["Escuelas de formación juvenil", "Intercambios culturales", "Medios de comunicación propios"],
     results: "+500 jóvenes vinculados",
     category: "Juventud",
+    image: progImg10,
   },
   {
     id: 9,
@@ -181,6 +200,7 @@ const programs: {
     objectives: ["Guardianes del manglar", "Educación ambiental comunitaria", "Planes de manejo territorial"],
     results: "+1.200 ha protegidas",
     category: "Ambiente",
+    image: progImg11,
   },
 ];
 
@@ -192,7 +212,7 @@ const projects = [
     statusColor: "bg-green-100 text-green-800",
     category: "Cultura",
     year: "2023–2025",
-    img: "photo-1493225457124-a3eb161ffa5f",
+    image: progImg8,
     description:
       "Rescate y digitalización del patrimonio musical intangible del Pacífico colombiano a través de grabaciones etnomusicales participativas.",
     partners: ["ONU Mujeres", "MinCultura"],
@@ -205,7 +225,7 @@ const projects = [
     statusColor: "bg-green-100 text-green-800",
     category: "DDHH",
     year: "2024–2026",
-    img: "photo-1573497019940-1c28c88b4f3e",
+    image: progImg5,
     description:
       "Fortalecimiento de redes de protección para mujeres defensoras de derechos humanos en el Pacífico nariñense.",
     partners: ["ONU Mujeres", "ACNUR"],
@@ -218,7 +238,7 @@ const projects = [
     statusColor: "bg-gray-100 text-gray-700",
     category: "Cultura",
     year: "2021–2023",
-    img: "photo-1529156069898-49953e39b3ac",
+    image: progImg3,
     description:
       "Formación intergeneracional en el canto tradicional del Pacífico, rescatando los alabaos, chigualos y bundes.",
     partners: ["Gobernación de Nariño", "MinCultura"],
@@ -231,7 +251,7 @@ const projects = [
     statusColor: "bg-amber-100 text-amber-800",
     category: "Ambiente",
     year: "2025–2027",
-    img: "photo-1518020382113-a7e8fc38eac9",
+    image: progImg11,
     description:
       "Programa de monitoreo y restauración de ecosistemas de manglar con participación comunitaria en la costa nariñense.",
     partners: ["WWF", "IIAP"],
@@ -244,7 +264,7 @@ const projects = [
     statusColor: "bg-green-100 text-green-800",
     category: "Educación",
     year: "2023–2025",
-    img: "photo-1503454537195-1dcabb73ffb9",
+    image: progImg6,
     description:
       "Diseño e implementación de currículos con enfoque etnoeducativo en instituciones de Tumaco y municipios vecinos.",
     partners: ["MEN", "Secretaría de Educación"],
@@ -257,7 +277,7 @@ const projects = [
     statusColor: "bg-gray-100 text-gray-700",
     category: "Arte",
     year: "2020–2022",
-    img: "photo-1558618666-fcd25c85cd64",
+    image: progImg7,
     description:
       "Festival itinerante de arte, cultura y memoria histórica en municipios del Pacífico nariñense afectados por el conflicto.",
     partners: ["PNUD", "Embajada de Alemania"],
@@ -271,7 +291,7 @@ const news = [
     title: "CANAPAVI en el Foro Mundial de Mujeres Defensoras",
     date: "15 de junio de 2025",
     category: "Derechos Humanos",
-    img: "photo-1573497019940-1c28c88b4f3e",
+    image: progImg4,
     excerpt:
       "Nuestra directora representó a las comunidades afropacíficas en el foro internacional organizado por ONU Mujeres en Ginebra.",
   },
@@ -280,7 +300,7 @@ const news = [
     title: "Nuevo disco de cantadoras del Pacífico sur",
     date: "2 de mayo de 2025",
     category: "Cultura",
-    img: "photo-1493225457124-a3eb161ffa5f",
+    image: donationImg,
     excerpt:
       "Lanzamos el álbum 'Voces del Manglar', con 18 canciones tradicionales interpretadas por las cantadoras de Tumaco.",
   },
@@ -289,7 +309,7 @@ const news = [
     title: "Festival Tejidos Sonoros 2025 convoca miles de personas",
     date: "18 de abril de 2025",
     category: "Eventos",
-    img: "photo-1529156069898-49953e39b3ac",
+    image: heroPhoto,
     excerpt:
       "La décima edición del festival reunió más de 4.000 personas en el malecón de Tumaco durante tres días de celebración cultural.",
   },
@@ -298,7 +318,7 @@ const news = [
     title: "Reconocimiento UNESCO al patrimonio musical del Pacífico",
     date: "10 de marzo de 2025",
     category: "Patrimonio",
-    img: "photo-1512813195386-6cf811ad3542",
+    image: progImg12,
     excerpt:
       "La marimba y los cantos del Pacífico colombiano refuerzan su reconocimiento internacional, impulsando nuestro trabajo de rescate.",
   },
@@ -307,7 +327,7 @@ const news = [
     title: "Nuevas becas para jóvenes líderes de Tumaco",
     date: "5 de febrero de 2025",
     category: "Educación",
-    img: "photo-1503454537195-1dcabb73ffb9",
+    image: progImg10,
     excerpt:
       "En alianza con la Universidad de Nariño, abrimos 20 becas para jóvenes líderes afrocolombianos en programas de ciencias sociales.",
   },
@@ -316,7 +336,7 @@ const news = [
     title: "Mapa de impacto 2024: un año de transformación cultural",
     date: "20 de enero de 2025",
     category: "Informe",
-    img: "photo-1518020382113-a7e8fc38eac9",
+    image: progImg9,
     excerpt:
       "Publicamos el informe anual con los resultados de todos nuestros proyectos, evidenciando el impacto en 12 municipios del Pacífico sur.",
   },
@@ -329,7 +349,7 @@ const events = [
     date: "12–14 sept 2025",
     location: "Malecón de Tumaco",
     category: "Festival",
-    img: "photo-1493225457124-a3eb161ffa5f",
+    image: progImg9,
     description: "Tres días de música, danza, teatro y gastronomía del Pacífico. Entrada libre para toda la comunidad.",
     free: true,
   },
@@ -339,7 +359,7 @@ const events = [
     date: "22 ago 2025",
     location: "Casa Cultural CANAPAVI",
     category: "Taller",
-    img: "photo-1529156069898-49953e39b3ac",
+    image: progImg4,
     description: "Formación en instrumentos de percusión tradicional del Pacífico. Cupos limitados a 20 participantes.",
     free: true,
   },
@@ -349,7 +369,7 @@ const events = [
     date: "5 sept – 15 oct 2025",
     location: "Virtual y presencial",
     category: "Formación",
-    img: "photo-1573497019940-1c28c88b4f3e",
+    image: progImg12,
     description: "Diplomado gratuito para líderes de comunidades negras del Pacífico colombiano. Certificado avalado.",
     free: true,
   },
@@ -359,7 +379,7 @@ const events = [
     date: "10 oct 2025",
     location: "Teatro Municipal de Tumaco",
     category: "Foro",
-    img: "photo-1573497019940-1c28c88b4f3e",
+    image: progImg10,
     description: "Espacio de intercambio y reflexión sobre el rol de las mujeres en la defensa territorial del Pacífico.",
     free: true,
   },
@@ -471,15 +491,18 @@ const library = [
 ];
 
 const galleryItems = [
-  { id: 1, img: "photo-1493225457124-a3eb161ffa5f", cat: "Música", title: "Festival Tejidos Sonoros" },
-  { id: 2, img: "photo-1573497019940-1c28c88b4f3e", cat: "Mujeres", title: "Escuela de Líderes" },
-  { id: 3, img: "photo-1529156069898-49953e39b3ac", cat: "Comunidad", title: "Asamblea comunitaria" },
-  { id: 4, img: "photo-1518020382113-a7e8fc38eac9", cat: "Naturaleza", title: "Manglares de Tumaco" },
-  { id: 5, img: "photo-1503454537195-1dcabb73ffb9", cat: "Educación", title: "Clase de etnoeducación" },
-  { id: 6, img: "photo-1558618666-fcd25c85cd64", cat: "Arte", title: "Taller de artesanías" },
-  { id: 7, img: "photo-1512813195386-6cf811ad3542", cat: "Música", title: "Marimba del Pacífico" },
-  { id: 8, img: "photo-1506794778202-cad84cf45f1d", cat: "Comunidad", title: "Encuentro de líderes" },
-  { id: 9, img: "photo-1531746020798-e6953c6e8e04", cat: "Mujeres", title: "Foro de mujeres" },
+  { id: 1, image: progImg8, cat: "Música", title: "Festival Tejidos Sonoros" },
+  { id: 2, image: progImg5, cat: "Mujeres", title: "Escuela de Líderes" },
+  { id: 3, image: progImg4, cat: "Comunidad", title: "Asamblea comunitaria" },
+  { id: 4, image: progImg11, cat: "Naturaleza", title: "Manglares de Tumaco" },
+  { id: 5, image: progImg6, cat: "Educación", title: "Clase de etnoeducación" },
+  { id: 6, image: progImg7, cat: "Arte", title: "Taller de artesanías" },
+  { id: 7, image: progImg9, cat: "Música", title: "Marimba del Pacífico" },
+  { id: 8, image: progImg10, cat: "Comunidad", title: "Encuentro de líderes" },
+  { id: 9, image: progImg3, cat: "Cultura", title: "Canto a la vida" },
+  { id: 10, image: progImg12, cat: "Cultura", title: "Memoria ancestral" },
+  { id: 11, image: donationImg, cat: "Territorio", title: "Paisaje del Pacífico" },
+  { id: 12, image: heroPhoto, cat: "Comunidad", title: "Voces del pueblo" },
 ];
 
 const donationLevels: {
@@ -1064,9 +1087,11 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
               >
                 <div className="h-52 bg-green-100 overflow-hidden">
                   <img
-                    src={unsplash(proj.img, 500, 300)}
+                    src={proj.image}
                     alt={proj.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      proj.id === 2 ? "object-[center_75%]" : ""
+                    }`}
                   />
                 </div>
                 <div className="p-6">
@@ -1115,7 +1140,7 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
               >
                 <div className="h-40 bg-green-800 overflow-hidden">
                   <img
-                    src={unsplash(ev.img, 400, 200)}
+                    src={ev.image}
                     alt={ev.title}
                     className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-300"
                   />
@@ -1168,7 +1193,7 @@ function HomePage({ setPage }: { setPage: (p: string) => void }) {
               >
                 <div className="h-44 bg-green-100 overflow-hidden">
                   <img
-                    src={unsplash(item.img, 400, 220)}
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -1470,9 +1495,146 @@ function NosotrosPage() {
 
 // ─── PROGRAMAS ───────────────────────────────────────────────────────────────
 
-function ProgramasPage() {
-  const [selected, setSelected] = useState<number | null>(null);
+function ProgramFlipCard({ prog, index }: { prog: (typeof programs)[number]; index: number }) {
+  const [flipped, setFlipped] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
+  const handleFlip = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFlipped((v) => !v);
+  };
+
+  const toggleInfo = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setInfoOpen((v) => !v);
+  };
+
+  return (
+    <div
+      className="group h-[460px] [perspective:1500px]"
+      style={{ animationDelay: `${index * 60}ms` }}
+    >
+      <div
+        className={`relative w-full h-full transition-transform duration-700 [transform-style:preserve-3d] ${
+          flipped ? "[transform:rotateY(180deg)]" : ""
+        }`}
+      >
+        {/* FRONT */}
+        <div className="absolute inset-0 [backface-visibility:hidden] bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col">
+          <div className={`h-2 bg-gradient-to-r ${prog.gradient}`} />
+          <div className="p-6 flex flex-col flex-1">
+            <div className="flex items-center justify-between mb-4">
+              <div
+                className={`inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br ${prog.gradient} text-white shadow-md`}
+              >
+                <prog.icon className="w-6 h-6" strokeWidth={1.8} />
+              </div>
+              <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest">
+                {prog.category}
+              </span>
+            </div>
+
+            <h3 className="font-display font-bold text-green-950 text-lg mb-2 leading-tight">
+              {prog.title}
+            </h3>
+            <p className="text-gray-500 text-sm leading-relaxed mb-4 line-clamp-4">
+              {prog.description}
+            </p>
+
+            {infoOpen && (
+              <div className="mb-4 pt-3 border-t border-gray-100 animate-in fade-in slide-in-from-top-2">
+                <h4 className="font-bold text-green-900 text-[10px] uppercase tracking-widest mb-2">
+                  Objetivos
+                </h4>
+                <ul className="space-y-1.5">
+                  {prog.objectives.map((obj, j) => (
+                    <li key={j} className="flex items-start gap-2 text-xs text-gray-600">
+                      <Check className="w-3.5 h-3.5 text-green-600 shrink-0 mt-0.5" strokeWidth={2.5} />
+                      <span className="leading-snug">{obj}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            <div className="mt-auto pt-3 space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-[11px] font-bold text-[#E64A19] bg-orange-50 border border-orange-100 rounded-full px-2.5 py-1">
+                  {prog.results}
+                </span>
+                <button
+                  onClick={toggleInfo}
+                  aria-label={infoOpen ? "Ver menos información" : "Ver más información"}
+                  className="text-[11px] text-green-700 hover:text-green-900 font-bold inline-flex items-center gap-1 transition-colors"
+                >
+                  {infoOpen ? (
+                    <>Ocultar <ChevronDown className="w-3 h-3 rotate-180 transition-transform" /></>
+                  ) : (
+                    <>Detalles <ChevronDown className="w-3 h-3 transition-transform" /></>
+                  )}
+                </button>
+              </div>
+
+              <button
+                onClick={handleFlip}
+                aria-label="Ver foto del programa"
+                className={`w-full flex items-center justify-center gap-2 bg-gradient-to-r ${prog.gradient} hover:brightness-110 text-white py-2.5 rounded-full text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md group/btn`}
+              >
+                <Camera className="w-3.5 h-3.5 group-hover/btn:scale-110 transition-transform" />
+                <span>Ver foto</span>
+                <Sparkles className="w-3 h-3 opacity-70 group-hover/btn:rotate-12 transition-transform" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* BACK */}
+        <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-2xl overflow-hidden shadow-xl border border-gray-100">
+          <div className="relative w-full h-full">
+            <img
+              src={prog.image}
+              alt={prog.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-green-950 via-green-950/40 to-transparent" />
+
+            <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${prog.gradient}`} />
+
+            <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <div
+                className={`inline-flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br ${prog.gradient} text-white shadow-lg`}
+              >
+                <prog.icon className="w-5 h-5" strokeWidth={1.8} />
+              </div>
+              <span className="text-[10px] font-black text-white bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-2.5 py-1 uppercase tracking-widest">
+                {prog.category}
+              </span>
+            </div>
+
+            <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
+              <h3 className="font-display font-bold text-xl mb-1 leading-tight drop-shadow-lg">
+                {prog.title}
+              </h3>
+              <p className="text-white/90 text-xs leading-relaxed mb-4 line-clamp-3">
+                {prog.description}
+              </p>
+              <button
+                onClick={handleFlip}
+                aria-label="Volver a la información del programa"
+                className="w-full flex items-center justify-center gap-2 bg-white/95 hover:bg-white text-green-950 py-2.5 rounded-full text-xs font-bold transition-all duration-200 shadow-lg hover:shadow-xl"
+              >
+                <ArrowRight className="w-3.5 h-3.5 rotate-180" />
+                <span>Volver a la info</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ProgramasPage() {
   return (
     <div>
       <section className="bg-green-950 py-20 text-white relative overflow-hidden">
@@ -1484,59 +1646,18 @@ function ProgramasPage() {
             Nueve programas estratégicos para la defensa cultural, los derechos humanos y el
             desarrollo territorial del Pacífico sur colombiano.
           </p>
+          <div className="mt-8 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 text-xs text-amber-200">
+            <Camera className="w-3.5 h-3.5" />
+            <span>Pasa el cursor y haz clic en <b>Ver foto</b> para descubrir cada programa</span>
+          </div>
         </div>
       </section>
 
       <section className="py-20 bg-[#FDFAF4]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
-            {programs.map((prog) => (
-              <div
-                key={prog.id}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
-                onClick={() => setSelected(selected === prog.id ? null : prog.id)}
-              >
-                <div className={`h-3 bg-gradient-to-r ${prog.gradient}`} />
-                <div className="p-7">
-                  <div className="flex items-center justify-between mb-4">
-                    <div
-                      className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br ${prog.gradient} text-white shadow-md`}
-                    >
-                      <prog.icon className="w-7 h-7" strokeWidth={1.8} />
-                    </div>
-                    <span className="text-xs font-bold text-gray-400 uppercase tracking-wide">
-                      {prog.category}
-                    </span>
-                  </div>
-                  <h3 className="font-display font-bold text-green-950 text-xl mb-2">{prog.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-5">{prog.description}</p>
-
-                  {selected === prog.id && (
-                    <div className="mt-4 pt-4 border-t border-gray-100">
-                      <h4 className="font-bold text-green-900 text-xs uppercase tracking-wide mb-3">
-                        Objetivos
-                      </h4>
-                      <ul className="space-y-2 mb-5">
-                        {prog.objectives.map((obj, j) => (
-                          <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
-                            <Check className="w-4 h-4 text-green-600 shrink-0 mt-0.5" />
-                            {obj}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs font-bold text-[#E64A19] bg-orange-50 border border-orange-100 rounded-full px-3 py-1">
-                      {prog.results}
-                    </div>
-                    <span className="text-xs text-green-700 font-semibold">
-                      {selected === prog.id ? "▲ Menos" : "▼ Más info"}
-                    </span>
-                  </div>
-                </div>
-              </div>
+            {programs.map((prog, i) => (
+              <ProgramFlipCard key={prog.id} prog={prog} index={i} />
             ))}
           </div>
         </div>
@@ -1595,9 +1716,11 @@ function ProyectosPage() {
               >
                 <div className="h-52 bg-green-100 overflow-hidden">
                   <img
-                    src={unsplash(proj.img, 500, 300)}
+                    src={proj.image}
                     alt={proj.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className={`w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ${
+                      proj.id === 2 ? "object-[center_75%]" : ""
+                    }`}
                   />
                 </div>
                 <div className="p-6">
@@ -1691,7 +1814,7 @@ function NoticiasPage() {
             <div className="rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm mb-12 grid md:grid-cols-2">
               <div className="h-64 md:h-auto bg-green-100 overflow-hidden">
                 <img
-                  src={unsplash(news[0].img, 600, 400)}
+                  src={news[0].image}
                   alt={news[0].title}
                   className="w-full h-full object-cover"
                 />
@@ -1720,7 +1843,7 @@ function NoticiasPage() {
               >
                 <div className="h-44 bg-green-100 overflow-hidden">
                   <img
-                    src={unsplash(item.img, 400, 220)}
+                    src={item.image}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
@@ -1770,7 +1893,7 @@ function NoticiasPage() {
 // ─── GALERÍA ──────────────────────────────────────────────────────────────────
 
 function GaleriaPage() {
-  const cats = ["Todas", "Música", "Mujeres", "Comunidad", "Naturaleza", "Educación", "Arte"];
+  const cats = ["Todas", "Música", "Mujeres", "Comunidad", "Naturaleza", "Educación", "Arte", "Cultura", "Territorio"];
   const [cat, setCat] = useState("Todas");
   const [lightbox, setLightbox] = useState<number | null>(null);
   const filtered = cat === "Todas" ? galleryItems : galleryItems.filter((g) => g.cat === cat);
@@ -1816,7 +1939,7 @@ function GaleriaPage() {
                 onClick={() => setLightbox(item.id)}
               >
                 <img
-                  src={unsplash(item.img, i % 7 === 0 ? 600 : 400, i % 7 === 0 ? 600 : 300)}
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
@@ -1846,7 +1969,7 @@ function GaleriaPage() {
           {galleryItems.filter((g) => g.id === lightbox).map((item) => (
             <div key={item.id} className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
               <img
-                src={unsplash(item.img, 900, 600)}
+                src={item.image}
                 alt={item.title}
                 className="w-full rounded-2xl"
               />
@@ -1962,7 +2085,7 @@ function EventosPage() {
               >
                 <div className="h-48 sm:h-auto bg-green-100 overflow-hidden">
                   <img
-                    src={unsplash(ev.img, 400, 300)}
+                    src={ev.image}
                     alt={ev.title}
                     className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   />
@@ -2490,7 +2613,7 @@ function ContactoPage() {
               {/* Map placeholder */}
               <div className="rounded-2xl overflow-hidden h-64 bg-green-100 border border-green-200 relative">
                 <img
-                  src={unsplash("photo-1518020382113-a7e8fc38eac9", 700, 400)}
+                  src={progImg10}
                   alt="Ubicación Tumaco"
                   className="w-full h-full object-cover opacity-50"
                 />
